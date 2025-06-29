@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
 from sklearn.linear_model import LogisticRegression
-import joblib
+import pickle
 
 app=Flask(__name__)
 
 
 #predicting using saved model
-model = joblib.load("iris_model.joblib")
+model = pickle.load(open("iris_model.pkl", "rb"))
 
 @app.route('/')
 def home():
