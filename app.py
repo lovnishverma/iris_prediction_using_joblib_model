@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from sklearn.linear_model import LogisticRegression
 import joblib
 
 app = Flask(__name__)
