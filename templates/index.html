@@ -84,13 +84,16 @@
        <div> The Flower Name is: </div>
      <div align="center" class="result"> {{data}} </div>
      <center>
-     {% if data=="setosa" %}
-        <img src="https://cdn.glitch.global/8599b2d2-58ab-4d42-98f5-97fa4c6bad04/Iris%20Setosa.png?v=1680866840563" alt="IRIS SETOSA" width="200" height="200">
-     {% elif data=="versicolor" %}
-        <img src="https://cdn.glitch.global/8599b2d2-58ab-4d42-98f5-97fa4c6bad04/Iris%20versicolor.png?v=1680866854461" alt="IRIS VERSICOLOR" width="200" height="200">
-     {% elif data=="virginica" %}
-        <img src="https://cdn.glitch.global/8599b2d2-58ab-4d42-98f5-97fa4c6bad04/Iris%20Virginica.png?v=1680866857022" alt="IRIS VIRGINICA" width="200" height="200">
-     {% endif %}
+{% if data=="setosa" %}
+    <img src="https://huggingface.co/spaces/your-username/your-space-name/resolve/main/setosa.png" alt="IRIS SETOSA" width="200" height="200">
+{% elif data=="versicolor" %}
+    <img src="https://huggingface.co/spaces/your-username/your-space-name/resolve/main/versicolor.png" alt="IRIS VERSICOLOR" width="200" height="200">
+{% elif data=="virginica" %}
+    <img src="https://huggingface.co/spaces/your-username/your-space-name/resolve/main/virginica.png" alt="IRIS VIRGINICA" width="200" height="200">
+{% endif %}
+
+
+
      </center>
     </div>
 </body>
