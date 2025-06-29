@@ -2,27 +2,31 @@ from flask import Flask, render_template, request
 from sklearn.linear_model import LogisticRegression
 import pickle
 
-app=Flask(__name__)
+app = Flask(__name__)
 
-
-#predicting using saved model
+# Load the saved model
 model = pickle.load(open("iris_model.pkl", "rb"))
 
 @app.route('/')
 def home():
-  return render_template("index.html")
+    return render_template("index.html")
 
 @app.route('/predict', methods=["POST"])
 def predict():
-  swidth=eval(request.form.get("swidth"))
-  sheight=eval(request.form.get("sheight"))
-  pwidth=eval(request.form.get("pwidth"))
-  pheight=eval(request.form.get("pheight"))
-  
-  prediction = model.predict([[swidth,sheight,pwidth,pheight]])
+    try:
+        # It's safer to use float() instead of eval() for security reasons
+        swidth = float(request.form.get("swidth"))
+        sheight = float(request.form.get("sheight"))
+        pwidth = float(request.form.get("pwidth"))
+        pheight = float(request.form.get("pheight"))
 
-  return render_template("index.html", data=prediction[0]))
+        # Make prediction
+        prediction = model.predict([[swidth, sheight, pwidth, pheight]])
 
+        return render_template("index.html", data=prediction[0])
+
+    except Exception as e:
+        return render_template("index.html", data=f"Error: {str(e)}")
 
 if __name__ == '__main__':
-  app.run()
+    app.run(debug=True)
